@@ -8,15 +8,13 @@ import '../entity/Course.dart';
 class CourseDetailsModel extends ChangeNotifier{
   CourseDetailsWidgetConfiguration configuration;
   final _courseService = CourseService();
-  late final Course course;
+  late final Future<Course> courseFuture;
 
 
   CourseDetailsModel({required this.configuration}){
-    _setup();
+    courseFuture = _courseService.getOneCourse(configuration.courseId);
   }
 
-  void _setup() async {
-    course = (await _courseService.getOneCourse(configuration.courseId));
-    notifyListeners();
-  }
+
 }
+

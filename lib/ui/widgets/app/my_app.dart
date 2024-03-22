@@ -1,37 +1,25 @@
 import 'package:flutter/material.dart';
-
 import '../../navigation/main_navigation.dart';
+import '../../router/router.dart';
 
-
-
-
-class MyApp extends StatelessWidget{
+class MyApp extends StatefulWidget{
   static final mainNavigation = MainNavigation();
 
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-
-          ),
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-              backgroundColor: Colors.white,
-              selectedItemColor: Colors.green,
-              unselectedItemColor: Colors.grey
-          )
-      ),
-      routes:mainNavigation.routes,
-      initialRoute: mainNavigation.initialRoute(),
-      onGenerateRoute: mainNavigation.onGenerateRoute,
-
+    return MaterialApp.router(
+      title: "Oqy",
+      theme: ThemeData.light(),
+      routerConfig: _appRouter.config(),
     );
   }
-
 }

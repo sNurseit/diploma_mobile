@@ -1,4 +1,6 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+@RoutePage()
 
 class SearchPageWidget extends StatelessWidget {
   const SearchPageWidget({super.key});

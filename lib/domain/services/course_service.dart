@@ -30,13 +30,14 @@ class CourseService {
         }
     }
 
-    Future<Course> getOneCourse(int courseId)async{
+    Future<Course> getOneCourse(int courseId) async {
         final String? token = await SessionDataProvider().getToken();
         _dio.options.headers['Authorization'] = token;
+
         try {
             Response response = await _dio.get('$GET_ONE_COURSE/$courseId');
             if (response.statusCode == 200) {
-                Course course = (response.data as Course);
+                Course course = Course.fromJson(response.data);
                 return course;
             } else {
                 throw Exception('Failed to load content. Status code: ${response.statusCode}');
@@ -46,4 +47,5 @@ class CourseService {
             throw Exception('Failed to make the request: $error');
         }
     }
+
 }

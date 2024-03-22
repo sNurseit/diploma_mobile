@@ -1,8 +1,5 @@
 
-
-
 import 'dart:async';
-
 import 'package:diplom_work_mobile/domain/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +8,7 @@ import '../../ui/navigation/main_navigation.dart';
 
 
 
-class AuthModel extends ChangeNotifier{
+class RegisterModel extends ChangeNotifier{
 
   final loginTextController =TextEditingController();
   final passwordTextController = TextEditingController();
@@ -42,7 +39,7 @@ class AuthModel extends ChangeNotifier{
     }
   }
 
-  void redirectToRegister(BuildContext context){
-    Navigator.of(context).pushReplacementNamed(MainNavigationRouteNames.registerScreen);
+  void redirectToLogin(BuildContext context){
+    Navigator.of(context).pushNamed(MainNavigationRouteNames.authScreen);
   }
 }
